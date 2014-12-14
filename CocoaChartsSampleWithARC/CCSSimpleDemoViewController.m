@@ -60,32 +60,32 @@ CGFloat  DEVICE_WIDTH;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"%@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+//    NSLog(@"%@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"%@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
 
     [self loadData];
-    NSLog(@"loadData %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"loadData %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initCandleStickChart];
-    NSLog(@"initCandleStickChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"initCandleStickChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initControllers];
-    NSLog(@"initControllers %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"initControllers %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initStickChart];
-    NSLog(@"initStickChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"initStickChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initMACDChart];
-    NSLog(@"initMACDChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+//    NSLog(@"initMACDChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initKDJChart];
-    NSLog(@"initKDJChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"initKDJChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initRSIChart];
-    NSLog(@"initRSIChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"initRSIChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initWRChart];
-    NSLog(@"initWRChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"initWRChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initCCIChart];
-    NSLog(@"initCCIChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+  //  NSLog(@"initCCIChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initBOLLChart];
-    NSLog(@"initBOLLChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+  //  NSLog(@"initBOLLChart %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
 
     self.scrollViewBottomChart.contentSize = CGSizeMake(self.scrollViewBottomChart.frame.size.width * 7, self.self.scrollViewBottomChart.frame.size.height);
 
@@ -98,6 +98,7 @@ CGFloat  DEVICE_WIDTH;
     //[self clearChart];
     self.candleStickChart.multipleTouchEnabled = YES;
     [self positioningViews];
+    [self.view setBackgroundColor:[UIColor blackColor]];
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -122,7 +123,7 @@ CGFloat  DEVICE_WIDTH;
         DEVICE_HEIGHT = screenSize.width;
         MARGIN_TOP = 0;
     }
-    [self.view setBackgroundColor:[UIColor blackColor]];
+
     [self positioningViews ];
 }
 
@@ -197,10 +198,10 @@ CGFloat  DEVICE_WIDTH;
     _scrollViewBottomChart.delegate = self;
 
 
-    _segChartType = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Candle", @"Bar", @"Line", nil]];
+    _segChartType = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"移动k线", @"移动光标",  nil]];
     _segChartType.frame = CGRectMake(0, MARGIN_TOP + _candleStickChart.frame.size.height +  _scrollViewBottomChart.frame.size.height
                                      + 5, 200, 33);    _segChartType.segmentedControlStyle = UISegmentedControlStyleBar;
-    [_segChartType addTarget:self action:@selector(segChartTypeValueChaged:) forControlEvents:UIControlEventValueChanged];
+    [_segChartType addTarget:self action:@selector(segChartTypeValueChanged:) forControlEvents:UIControlEventValueChanged];
 
     _segBottomChartType = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"VOL", @"MACD", @"KDJ", @"RSI", @"WR", @"CCI", @"BOLL", nil]];
     _segBottomChartType.frame = CGRectMake(0, MARGIN_TOP + MARGIN_TOP + _candleStickChart.frame.size.height +  _scrollViewBottomChart.frame.size.height + 40, 320, 33);
@@ -221,7 +222,6 @@ CGFloat  DEVICE_WIDTH;
     [super viewWillAppear:animated];
 
     self.title = @"Simple Demo";
-    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
 }
 
@@ -344,16 +344,27 @@ CGFloat  DEVICE_WIDTH;
 //}
 
 
-- (void)segChartTypeValueChaged:(UISegmentedControl *)segmentedControl {
+- (void)segChartTypeValueChanged:(UISegmentedControl *)segmentedControl {
     if (0 == segmentedControl.selectedSegmentIndex) {
-        self.candleStickChart.candleStickStyle = CCSCandleStickStyleStandard;
-        [self.candleStickChart setNeedsDisplay];
-    } else if (1 == segmentedControl.selectedSegmentIndex) {
-        self.candleStickChart.candleStickStyle = CCSCandleStickStyleBar;
-        [self.candleStickChart setNeedsDisplay];
-    } else if (2 == segmentedControl.selectedSegmentIndex) {
-        self.candleStickChart.candleStickStyle = CCSCandleStickStyleLine;
-        [self.candleStickChart setNeedsDisplay];
+        [self.candleStickChart setMoveCandleStick];
+//        [_stickChart setMoveCandleStick];
+//        [_macdChart setMoveCandleStick];
+//        [_kdjChart setMoveCandleStick];
+//        [_rsiChart setMoveCandleStick];
+//        [_wrChart setMoveCandleStick];
+//        [_cciChart setMoveCandleStick];
+//        [_bollChart setMoveCandleStick];
+
+     } else if (1 == segmentedControl.selectedSegmentIndex) {
+         [self.candleStickChart setMoveCross];
+//         [_stickChart setMoveCross];
+//         [_macdChart setMoveCross];
+//         [_kdjChart setMoveCross];
+//         [_rsiChart setMoveCross];
+//         [_wrChart setMoveCross];
+//         [_cciChart setMoveCross];
+//         [_bollChart setMoveCross];
+
     }
 }
 
@@ -757,8 +768,8 @@ CGFloat  DEVICE_WIDTH;
     self.stickChart.maxValue = 800000;
     self.stickChart.minValue = 0;
     self.stickChart.axisMarginLeft = 50;
-    self.stickChart.displayCrossYOnTouch = YES;
-    self.stickChart.displayCrossXOnTouch = YES;
+    self.stickChart.displayCrossYOnTouch = NO;
+    self.stickChart.displayCrossXOnTouch = NO;
     self.stickChart.stickFillColor = [UIColor colorWithRed:0.7 green:0.7 blue:0 alpha:0.8];
 
     self.stickChart.axisXColor = [UIColor darkGrayColor];
@@ -816,8 +827,8 @@ CGFloat  DEVICE_WIDTH;
     self.macdChart.maxValue = 800000;
     self.macdChart.minValue = 0;
     self.macdChart.axisMarginLeft = 50;
-    self.macdChart.displayCrossYOnTouch = YES;
-    self.macdChart.displayCrossXOnTouch = YES;
+    self.macdChart.displayCrossYOnTouch = NO;
+    self.macdChart.displayCrossXOnTouch = NO;
     self.macdChart.stickFillColor = [UIColor colorWithRed:0.7 green:0.7 blue:0 alpha:0.8];
 
     self.macdChart.axisXColor = [UIColor darkGrayColor];
@@ -834,8 +845,8 @@ CGFloat  DEVICE_WIDTH;
     self.macdChart.maxValue = 300000;
     self.macdChart.minValue = -300000;
     self.macdChart.maxSticksNum = 100;
-    self.macdChart.displayCrossXOnTouch = YES;
-    self.macdChart.displayCrossYOnTouch = YES;
+    self.macdChart.displayCrossXOnTouch = NO;
+    self.macdChart.displayCrossYOnTouch = NO;
     self.macdChart.latitudeNum = 2;
     self.macdChart.longitudeNum = 3;
     self.macdChart.backgroundColor = [UIColor blackColor];
@@ -884,8 +895,8 @@ CGFloat  DEVICE_WIDTH;
     self.kdjChart.axisMarginRight = 58;
     self.kdjChart.axisMarginTop = 1;
     self.kdjChart.axisYPosition = CCSGridChartYAxisPositionRight;
-    self.kdjChart.displayCrossXOnTouch = YES;
-    self.kdjChart.displayCrossYOnTouch = YES;
+    self.kdjChart.displayCrossXOnTouch = NO;
+    self.kdjChart.displayCrossYOnTouch = NO;
     self.kdjChart.latitudeNum = 2;
     self.kdjChart.longitudeNum = 3;
     self.kdjChart.displayNumber = 50;
@@ -915,8 +926,8 @@ CGFloat  DEVICE_WIDTH;
     self.rsiChart.axisMarginRight = 58;
     self.rsiChart.axisMarginTop = 1;
     self.rsiChart.axisYPosition = CCSGridChartYAxisPositionRight;
-    self.rsiChart.displayCrossXOnTouch = YES;
-    self.rsiChart.displayCrossYOnTouch = YES;
+    self.rsiChart.displayCrossXOnTouch = NO;
+    self.rsiChart.displayCrossYOnTouch = NO;
     self.rsiChart.latitudeNum = 2;
     self.rsiChart.longitudeNum = 3;
     self.rsiChart.displayNumber = 50;
@@ -961,8 +972,8 @@ CGFloat  DEVICE_WIDTH;
     self.wrChart.axisMarginRight = 58;
     self.wrChart.axisMarginTop = 1;
     self.wrChart.axisYPosition = CCSGridChartYAxisPositionRight;
-    self.wrChart.displayCrossXOnTouch = YES;
-    self.wrChart.displayCrossYOnTouch = YES;
+    self.wrChart.displayCrossXOnTouch = NO;
+    self.wrChart.displayCrossYOnTouch = NO;
     self.wrChart.latitudeNum = 2;
     self.wrChart.longitudeNum = 3;
     self.wrChart.displayNumber = 50;
@@ -1003,8 +1014,8 @@ CGFloat  DEVICE_WIDTH;
     self.cciChart.axisMarginRight = 58;
     self.cciChart.axisMarginTop = 1;
     self.cciChart.axisYPosition = CCSGridChartYAxisPositionRight;
-    self.cciChart.displayCrossXOnTouch = YES;
-    self.cciChart.displayCrossYOnTouch = YES;
+    self.cciChart.displayCrossXOnTouch = NO;
+    self.cciChart.displayCrossYOnTouch = NO;
     self.cciChart.latitudeNum = 2;
     self.cciChart.longitudeNum = 3;
     self.cciChart.displayNumber = 50;
@@ -1044,8 +1055,8 @@ CGFloat  DEVICE_WIDTH;
     self.bollChart.axisMarginRight = 58;
     self.bollChart.axisMarginTop = 1;
     self.bollChart.axisYPosition = CCSGridChartYAxisPositionRight;
-    self.bollChart.displayCrossXOnTouch = YES;
-    self.bollChart.displayCrossYOnTouch = YES;
+    self.bollChart.displayCrossXOnTouch = NO;
+    self.bollChart.displayCrossYOnTouch = NO;
     self.bollChart.latitudeNum = 2;
     self.bollChart.longitudeNum = 3;
     self.bollChart.displayNumber = 50;
@@ -1067,7 +1078,7 @@ CGFloat  DEVICE_WIDTH;
 - (void)initCandleStickChartData {
     if (self.chartData != NULL) {
         NSMutableArray *stickDatas = [[NSMutableArray alloc] initWithCapacity:[self.chartData count]];
-        NSLog(@"initCandleStickChartData step 1 %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+       // NSLog(@"initCandleStickChartData step 1 %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
 
         for (NSInteger i = [self.chartData count] - 1; i >= 0; i--) {
             OHLCVDData *item = [self.chartData objectAtIndex:i];
@@ -1094,7 +1105,7 @@ CGFloat  DEVICE_WIDTH;
         self.candleStickChart.singleTouchPoint = CGPointMake(-1, -1);
 
         [self.candleStickChart setNeedsDisplay];
-        NSLog(@"initCandleStickChartData step end %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+    //    NSLog(@"initCandleStickChartData step end %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
 
     }
 }
@@ -1103,9 +1114,9 @@ CGFloat  DEVICE_WIDTH;
     CCSBOLLMASlipCandleStickChart *candleStickChart = [[CCSBOLLMASlipCandleStickChart alloc] initWithFrame:CGRectMake(0, MARGIN_TOP, DEVICE_WIDTH, DEVICE_HEIGHT / 2)];
 
     self.candleStickChart = candleStickChart;
-    NSLog(@"before initCandleStickChartData %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"before initCandleStickChartData %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     [self initCandleStickChartData];
-    NSLog(@"after initCandleStickChartData %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
+ //   NSLog(@"after initCandleStickChartData %@",[[NSDate alloc] initWithTimeIntervalSinceNow:0]);
     //设置stickData
     candleStickChart.maxValue = 340;
     candleStickChart.minValue = 240;
