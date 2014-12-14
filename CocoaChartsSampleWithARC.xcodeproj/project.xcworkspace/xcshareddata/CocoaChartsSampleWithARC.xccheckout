@@ -22,7 +22,7 @@
 		<key>B220C2D1DAD66D84EBAD18E0BDBF76C7753EC00B</key>
 		<string>../..</string>
 		<key>FEBEA3BED060FFED514157DE1EDBC645B7ED36BD</key>
-		<string>../../../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/sunforhappy/JustForTestCandleStick.git</string>
@@ -38,7 +38,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>FEBEA3BED060FFED514157DE1EDBC645B7ED36BD</string>
 			<key>IDESourceControlWCCName</key>
-			<string>..</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
