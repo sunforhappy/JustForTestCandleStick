@@ -10,22 +10,26 @@
 	<string>CocoaChartsSampleWithARC</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>B220C2D1DAD66D84EBAD18E0BDBF76C7753EC00B</key>
+		<string>https://github.com/sunforhappy/JustForTestCandleStick.git</string>
 		<key>FEBEA3BED060FFED514157DE1EDBC645B7ED36BD</key>
 		<string>https://github.com/limccn/Cocoa-Charts.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>src/CocoaChartsSampleWithARC/CocoaChartsSampleWithARC.xcodeproj</string>
+	<string>CocoaChartsSampleWithARC.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>B220C2D1DAD66D84EBAD18E0BDBF76C7753EC00B</key>
+		<string>../..</string>
 		<key>FEBEA3BED060FFED514157DE1EDBC645B7ED36BD</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/limccn/Cocoa-Charts.git</string>
+	<string>https://github.com/sunforhappy/JustForTestCandleStick.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>FEBEA3BED060FFED514157DE1EDBC645B7ED36BD</string>
+	<string>B220C2D1DAD66D84EBAD18E0BDBF76C7753EC00B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -34,7 +38,15 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>FEBEA3BED060FFED514157DE1EDBC645B7ED36BD</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Cocoa-Charts</string>
+			<string>..</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B220C2D1DAD66D84EBAD18E0BDBF76C7753EC00B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CocoaChartsSampleWithARC</string>
 		</dict>
 	</array>
 </dict>

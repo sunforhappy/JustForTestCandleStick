@@ -175,7 +175,10 @@ CGFloat  DEVICE_WIDTH;
     _candleStickChart.frame = CGRectMake(0, MARGIN_TOP, DEVICE_WIDTH, DEVICE_HEIGHT/2);
     _scrollViewBottomChart.frame = CGRectMake(0, _candleStickChart.frame.size.height+ MARGIN_TOP, DEVICE_WIDTH, DEVICE_HEIGHT/4);
     _scrollViewBottomChart.contentSize = CGSizeMake(_scrollViewBottomChart.frame.size.width * 7, _scrollViewBottomChart.frame.size.height);
-
+    CGPoint offset;
+    offset.y =0;
+    offset.x = _segBottomChartType.selectedSegmentIndex * _scrollViewBottomChart.frame.size.width;
+    _scrollViewBottomChart.contentOffset   = offset;
     _stickChart.frame = CGRectMake(0, 0, DEVICE_WIDTH, _scrollViewBottomChart.frame.size.height);
     _macdChart.frame = CGRectMake(DEVICE_WIDTH, 0, DEVICE_WIDTH, _scrollViewBottomChart.frame.size.height);
     _kdjChart.frame = CGRectMake(DEVICE_WIDTH*2, 0, DEVICE_WIDTH, _scrollViewBottomChart.frame.size.height);
@@ -206,6 +209,7 @@ CGFloat  DEVICE_WIDTH;
     _segBottomChartType = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"VOL", @"MACD", @"KDJ", @"RSI", @"WR", @"CCI", @"BOLL", nil]];
     _segBottomChartType.frame = CGRectMake(0, MARGIN_TOP + MARGIN_TOP + _candleStickChart.frame.size.height +  _scrollViewBottomChart.frame.size.height + 40, 320, 33);
     _segBottomChartType.segmentedControlStyle = UISegmentedControlStyleBar;
+    _segBottomChartType.selectedSegmentIndex = 0; 
     [_segBottomChartType addTarget:self action:@selector(segBottomChartTypeTypeValueChaged:) forControlEvents:UIControlEventValueChanged];
 
 

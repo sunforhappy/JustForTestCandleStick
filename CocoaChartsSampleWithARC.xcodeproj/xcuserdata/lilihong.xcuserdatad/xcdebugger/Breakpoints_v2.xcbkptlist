@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CocoaChartsSampleWithARC/CCSSimpleDemoViewController.m"
-            timestampString = "440249871.67219"
+            timestampString = "440252682.317467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1083"
-            endingLineNumber = "1083"
+            startingLineNumber = "1087"
+            endingLineNumber = "1087"
             landmarkName = "-initCandleStickChartData"
             landmarkType = "5">
          </BreakpointContent>
@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CocoaChartsSampleWithARC/CCSSimpleDemoViewController.m"
-            timestampString = "440248366.371961"
+            timestampString = "440252551.995307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "-positioningViews"
             landmarkType = "5">
          </BreakpointContent>
